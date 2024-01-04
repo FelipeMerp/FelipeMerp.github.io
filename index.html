@@ -1,7 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Currículum</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.5s ease;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 2em 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.5s ease;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 1em;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2 {
+            color: #3498db;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1em;
+        }
+
+        .contact-info div {
+            flex: 1;
+            text-align: center;
+        }
+
+        .skills ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills li {
+            margin-bottom: 0.5em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #3498db;
+            color: #fff;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World PRUEBA</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+    <header>
+        <h1>Mi Nombre</h1>
+        <p>Desarrollador Web</p>
+    </header>
+
+    <section class="intro">
+        <h2>Información de Contacto</h2>
+        <div class="contact-info">
+            <div>
+                <h3>Dirección</h3>
+                <p>Calle, Ciudad, País</p>
+            </div>
+            <div>
+                <h3>Email</h3>
+                <p>correo@example.com</p>
+            </div>
+            <div>
+                <h3>Teléfono</h3>
+                <p>(123) 456-7890</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills">
+        <h2>Habilidades</h2>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Node.js</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Mi Currículum</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var sections = document.querySelectorAll('section');
+
+            function isInViewport(element) {
+                var rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                );
+            }
+
+            function showSections() {
+                sections.forEach(function(section) {
+                    if (isInViewport(section)) {
+                        section.classList.add('show');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', showSections);
+            showSections(); // Mostrar secciones al cargar la página
+        });
+    </script>
+
 </body>
 </html>
